@@ -34,5 +34,20 @@ public class BinarySearchTestTest {
         int[] array  = {};
         assertEquals(-1,BinarySearch.find(array, 1));
     }
+    
+    @Test
+    public void findElementInOneElementArray()
+    {
+        int[] array  = {8};
+        assertEquals(0,BinarySearch.find(array, 8));
+    }
+    
+    @Test
+    public void findElementInsideArray()
+    {
+        int[] array  = {1,2,3,4,5,6,7,8,9,10,11};
+        assertEquals(8,BinarySearch.find(array, 9));
+    }
+    
 
 }
