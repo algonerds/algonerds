@@ -16,9 +16,9 @@ public class BinarySearchTestTest {
     @Test
     public void findAnyElement()
     {
-        int[] array  = {1,1,1,1,1,1,1,1,1,1};
+        int[] array  = {0,0,1,1,2,2,2,3,3,4};
         int searchResult = BinarySearch.find(array, 1);
-        assertTrue( (0 <= searchResult) && (searchResult  <= 9 ) );
+        assertTrue( (2 <= searchResult) && (searchResult  <= 3 ) );
     }
 
     @Test
@@ -41,7 +41,21 @@ public class BinarySearchTestTest {
         int[] array  = {8};
         assertEquals(0,BinarySearch.find(array, 8));
     }
-    
+
+    @Test
+    public void findFirstElementInTwoElementsArray()
+    {
+        int[] array  = {8,9};
+        assertEquals(0,BinarySearch.find(array, 8));
+    }
+
+    @Test
+    public void findSecondElementInTwoElementsArray()
+    {
+        int[] array  = {8,9};
+        assertEquals(1,BinarySearch.find(array, 9));
+    }
+
     @Test
     public void findElementInsideArray()
     {
