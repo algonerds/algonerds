@@ -38,7 +38,7 @@ public class SortableTest {
     @Test
     public void sortEmptyArray() {
         int[] array  = {};
-        assertEquals(null, sorter.sort(array));
+        assertArrayEquals(new int[] {}, sorter.sort(array));
     }
 
     @Test
