@@ -31,7 +31,7 @@ public class SortableTest {
 
     @Parameterized.Parameters
     public static Collection data() {
-        Class[][] data = new Class[][] { {InsertionSort.class} };
+        Class[][] data = new Class[][] { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class} };
         return Arrays.asList(data);
     }
 
