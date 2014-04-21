@@ -5,6 +5,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Random;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -14,6 +15,8 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(value = Parameterized.class)
 public class SortableTest {
+    final int MAX_ARRAY_LENGTH = 10000;
+
     private Class algorithmType = null;
     private Sortable sorter = null;
 
@@ -36,22 +39,19 @@ public class SortableTest {
     public void sortEmptyArray() {
         int[] array  = {};
         assertEquals(null, sorter.sort(array));
-
     }
 
     @Test
     public void sortOneElementArray() {
         int[] array  = { 1 };
         assertArrayEquals(new int[] { 1 }, sorter.sort(array));
-
-    }
+     }
 
     @Test
     public void sortEqualElementsArray() {
         int[] array  = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         assertArrayEquals(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, sorter.sort(array));
-
-    }
+     }
 
     @Test
     public void sortSortedElementsArray() {
@@ -83,5 +83,20 @@ public class SortableTest {
         assertArrayEquals(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, sorter.sort(array));
     }
 
+    @Test
+    public void sortRandomTest() {
+        Random rnd = new Random();
 
+        int[] array = new int[rnd.nextInt(MAX_ARRAY_LENGTH)];
+
+        for(int i = 0; i < array.length; ++i) {
+            int random = rnd.nextInt();
+            array[i] = random;
+        }
+
+        int[] sorted_array = array;
+        Arrays.sort(sorted_array);
+
+        assertArrayEquals(sorted_array, sorter.sort(array));
+    }
 }
