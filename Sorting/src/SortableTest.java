@@ -30,14 +30,14 @@ public class SortableTest {
 
     @Parameterized.Parameters(name = "#{index}: {0}")
     public static Collection data() {
-        Class[][] data = { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class} };
+        Class[][] data = new Class[][] { {InsertionSort.class}};//, {SelectionSort.class}, {BubbleSort.class} };
         return Arrays.asList(data);
     }
 
     @Test
     public void sortEmptyArray() {
         int[] array  = {};
-        assertArrayEquals(new int[] {}, sorter.sort(array));
+        assertArrayEquals(new int[]{}, sorter.sort(array));
     }
 
     @Test
