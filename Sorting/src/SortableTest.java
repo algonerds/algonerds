@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.Random;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Egor Hamaliy on 4/21/14.
@@ -17,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class SortableTest {
     final int MAX_ARRAY_LENGTH = 10000;
 
-    private Class algorithmType = null;
+    private Class<? extends Sortable> algorithmType = null;
     private Sortable sorter = null;
 
     public SortableTest(Class algorithmType) {
@@ -26,12 +25,12 @@ public class SortableTest {
 
     @Before
     public void initialize() throws IllegalAccessException, InstantiationException {
-        sorter = (Sortable)algorithmType.newInstance();
+        sorter = algorithmType.newInstance();
     }
 
     @Parameterized.Parameters
     public static Collection data() {
-        Class[][] data = new Class[][] { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class} };
+        Class[][] data = { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class} };
         return Arrays.asList(data);
     }
 
@@ -66,13 +65,13 @@ public class SortableTest {
     }
 
     @Test
-    public void sortOddElementsArray() {
+    public void sortEvenElementsArray() {
         int[] array  = { 100, 5, 1, 2, 9, 101, 21, 9, 2, 56, 34, 0 };
         assertArrayEquals(new int[] { 0, 1, 2, 2, 5, 9, 9, 21, 34, 56, 100, 101 }, sorter.sort(array));
     }
 
     @Test
-    public void sortEvenElementsArray() {
+    public void sortOddElementsArray() {
         int[] array  = { 100, 5, 1, 2, 9, 101, 21, 9, 2, 56, 34 };
         assertArrayEquals(new int[] { 1, 2, 2, 5, 9, 9, 21, 34, 56, 100, 101 }, sorter.sort(array));
     }
@@ -94,7 +93,7 @@ public class SortableTest {
             array[i] = random;
         }
 
-        int[] sorted_array = array;
+        int[] sorted_array = array.clone();
         Arrays.sort(sorted_array);
 
         assertArrayEquals(sorted_array, sorter.sort(array));
