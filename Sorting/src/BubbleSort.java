@@ -1,8 +1,18 @@
-/**
- * Created by Egor Hamaliy on 4/21/14.
- */
+import java.util.Arrays;
+
 public class BubbleSort implements Sortable {
     public int[] sort(int[] numbers) {
-        return null;
+        int[] a = Arrays.copyOf(numbers, numbers.length);
+        int l = a.length;
+
+        for (int i = l-2; i >= 0; i--) { // maximum j
+            for (int j = 0; j <= i; j++) { // the first element of the pair
+                if (a[j] > a[j+1]) {
+                    int t = a[j]; a[j] = a[j+1]; a[j+1] = t;
+                }
+            }
+        }
+
+        return a;
     }
 }
