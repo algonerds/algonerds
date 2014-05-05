@@ -30,7 +30,7 @@ public class SortableTest {
 
     @Parameterized.Parameters(name = "#{index}: {0}")
     public static Collection data() {
-        Class[][] data = new Class[][] { {InsertionSort.class}};//, {SelectionSort.class}, {BubbleSort.class} };
+        Class[][] data = new Class[][] { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class} };
         return Arrays.asList(data);
     }
 
@@ -66,8 +66,8 @@ public class SortableTest {
 
     @Test
     public void sortEvenElementsArray() {
-        int[] array  = { 100, 5, 1, 2, 9, 101, 21, 9, 2, 56, 34, 0 };
-        assertArrayEquals(new int[] { 0, 1, 2, 2, 5, 9, 9, 21, 34, 56, 100, 101 }, sorter.sort(array));
+        int[] array  = { 100, 5, 1,101, 2, 9, 21, 9, 2, 56, 34, 0 };
+        assertArrayEquals(new int[] { 0, 1, 2, 2, 5, 9, 9, 21, 34, 56, 100,101}, sorter.sort(array));
     }
 
     @Test
