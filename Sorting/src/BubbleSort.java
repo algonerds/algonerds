@@ -1,18 +1,18 @@
 public class BubbleSort implements Sortable {
     public int[] sort(int[] numbers) {
-        Integer temp=null;
-        for (int i=0; i<=numbers.length-2;i++){
-            for (int j=0; j<=numbers.length-2-i;j++){
+        boolean breakFlag = true;
+        int temp;
+        for (int i=0; i<numbers.length-1; i++){
+            for (int j=0; j<numbers.length-1-i; j++){
                 if (numbers[j]>numbers[j+1]){
                     temp         = numbers[j];
                     numbers[j]   = numbers[j+1];
                     numbers[j+1] = temp;
+                    breakFlag = false;
                 }
             }
             //if no swaps in internal cycle => nothing to sort there
-            if (temp == null){
-                break;
-            }
+            if (breakFlag) break;
         }
         return numbers;
     }
