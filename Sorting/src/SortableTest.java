@@ -30,7 +30,8 @@ public class SortableTest {
 
     @Parameterized.Parameters(name = "#{index}: {0}")
     public static Collection data() {
-        Class[][] data = new Class[][] { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class} };
+        Class[][] data = new Class[][] { {InsertionSort.class}, {SelectionSort.class}, {BubbleSort.class},  {MergeSort.class}, {QuickSort.class},   {HeapSort.class} };
+
         return Arrays.asList(data);
     }
 
@@ -78,7 +79,7 @@ public class SortableTest {
 
     @Test
     public void sortReversedElementsArray() {
-        int[] array  = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+        int[] array  = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
         assertArrayEquals(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, sorter.sort(array));
     }
 
