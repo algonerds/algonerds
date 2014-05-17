@@ -13,13 +13,13 @@ import static org.junit.Assert.assertArrayEquals;
  * Created by Egor Hamaliy on 4/21/14.
  */
 @RunWith(value = Parameterized.class)
-public class SortableTest {
+public class SortingTest {
     final int MAX_ARRAY_LENGTH = 10000;
 
-    private Class<? extends Sortable> algorithmType = null;
-    private Sortable sorter = null;
+    private Class<? extends Sorting> algorithmType = null;
+    private Sorting sorter = null;
 
-    public SortableTest(Class algorithmType) {
+    public SortingTest(Class algorithmType) {
         this.algorithmType = algorithmType;
     }
 

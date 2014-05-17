@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class BubbleSort implements Sortable {
+public class BubbleSort implements Sorting {
     public int[] sort(int[] numbers) {
         int[] a = Arrays.copyOf(numbers, numbers.length);
         int l = a.length;
