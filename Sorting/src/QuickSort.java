@@ -8,12 +8,18 @@ QuickSort implements Sorting {
 
   private void
   qsort(int[] arr, int beg, int end) {
-    if (end - beg <= 1) return;
+    while (end - beg > 1) {
 
-    int
-    piv = partition(arr, beg, end);
-    qsort(arr, beg, piv);
-    qsort(arr, piv+1, end);
+      int
+      piv = partition(arr, beg, end);
+      if (piv - beg < end - (piv+1)) { // to avoid stack overflow, optimise tail recursion
+        qsort(arr, beg, piv);
+        beg = piv+1;
+      } else {
+        qsort(arr, piv+1, end);
+        end = piv;
+      }
+    }
   }
 
   private int
