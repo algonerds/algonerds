@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class InsertionSort implements Sortable {
+public class InsertionSort implements Sorting {
     // sorted:x:rest -> smaller<x<larger:rest
     //
     public int[] sort(int[] numbers) {

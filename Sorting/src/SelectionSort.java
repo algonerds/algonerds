@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class SelectionSort implements Sortable {
+public class SelectionSort implements Sorting {
     public int[] sort(int[] numbers) {
         int[] a = Arrays.copyOf(numbers, numbers.length);
         int l = numbers.length;
