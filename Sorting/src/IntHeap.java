@@ -3,23 +3,23 @@ IntHeap {
   int[] buffer = new int[16];
   int size = 0;
   static final int UNUSED = 1;
+  static final int ROOT = 1;
 
   public void push(int x) {
     ensureCapacity(size + 1);
     ++size;
-    buffer[size] = x;
-    pushUp(1, size);
+    pushUp(size, x);
   }
 
   public int top() {
     if (size == 0) throw new IllegalStateException();
-    return buffer[1];
+    return buffer[ROOT];
   }
 
   public int pop() {
     int
     top = top();
-    pullUp(1, size);
+    pullUp(size);
     --size;
     return top;
   }
@@ -37,17 +37,20 @@ IntHeap {
 
   private int capacity() { return buffer.length - UNUSED; }
 
-  private void pushUp(int root, int newby) {
-    while (newby > root) {
+  private void pushUp(int hole, int x) {
+    while (hole > ROOT) {
       int
-      parent = newby / 2;
-      if (buffer[parent] < buffer[newby]) break;
-      swap(newby, parent);
-      newby = parent;
+      parent = hole / 2;
+      if (buffer[parent] < x) break;
+      buffer[hole] = buffer[parent];
+      hole = parent;
     }
+    buffer[hole] = x;
   }
 
-  private void pullUp(int hole, int last) {
+  private void pullUp(int last) {
+    int
+    hole = ROOT;
     while (true) {
       int
       child = hole * 2;
@@ -60,13 +63,7 @@ IntHeap {
     }
 
     if (hole < last) {
-      buffer[hole] = buffer[last];
-      pushUp(1, hole);
+      pushUp(hole, buffer[last]);
     }
-  }
-
-  private void swap(int i, int j) {
-    int
-    tmp = buffer[i]; buffer[i] = buffer[j]; buffer[j] = tmp;
   }
 }
