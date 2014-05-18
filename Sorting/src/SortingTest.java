@@ -31,6 +31,7 @@ public class SortingTest {
     @Parameterized.Parameters(name = "#{index}: {0}")
     public static Collection data() {
         Class[][] data = {
+          {TopDownMergeSort.class},
           {BottomUpMergeSort.class},
           {BottomUpListMergeSort.class},
           {InsertionSort.class},
